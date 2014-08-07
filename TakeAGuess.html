@@ -1,0 +1,87 @@
+<script>
+
+// Alert Messages
+var wrongMsg = "You have guessed incorrectly, sorry.";
+
+var manufHint = " Think moon occluding the sun.";
+var modelHint = " Another phrase for a crimson circle?";
+var finishHint = " What's on shiny bumpers?";
+var hint = "";
+var outMsg;
+
+doNext = false; // true when guess is correct.
+
+// Razor description variables
+var goodManuf = "eclipse";
+var goodModel = "red ring";
+var goodFinish = "chrome";
+
+// User input variables
+var userManuf;
+var userModel;
+var userFinish;
+
+function getInput(promptString){
+	var inString = prompt(promptString);
+	return inString.toLowerCase();
+}
+
+function showWrongAnswer(errorMsg, hint){
+	// Let the user know if they guessed right or wrong.
+	alert(errorMsg + hint);
+}
+
+	// Ask the user to make a series of guesses leading to the right razor
+	do {
+		userManuf = getInput("What is the manufacturer's name?")
+		userManuf = userManuf.toLowerCase();
+
+		if (userManuf != goodManuf)
+		{
+			showWrongAnswer(wrongMsg, manufHint);
+		}
+		else{
+			doNext = true;
+		}
+	}
+	while(doNext === false);
+
+	doNext = false;
+
+	do {
+			userModel = getInput("What is the razor's model name?")
+			userModel = userModel.toLowerCase();
+
+			if (userModel !== goodModel)
+			{
+				showWrongAnswer(wrongMsg, modelHint);
+			}
+			else{
+				doNext = true;
+			}
+		} // do
+	while(doNext === false);
+
+	doNext = false;
+
+	do {
+				userFinish = getInput("What is the razor's finish?")
+				userFinish = userFinish.toLowerCase();
+
+				if (userFinish !== goodFinish)
+				{
+					showWrongAnswer(wrongMsg, finishHint);
+				}
+				else{
+					doNext = true;
+				}
+			} // do
+		while(doNext === false);
+
+		alert("Congratulations, you got it.")
+
+
+
+
+
+</script>
