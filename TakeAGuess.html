@@ -15,17 +15,17 @@
     	<h2>What is the manufacturers name?</h2>
 	    	<form id = manuf; action = "demo_form.asp">
 	  			Answer: <input type="text" name="manufAnswer"><br>
-					<input type = "button" id="create" value="Submit" onclick="Javascript:game()">
+					<input type = "button" id="create-manuf" value="Submit" onclick="getManuf()">
 				</form>
     	<h2>What is the model name?</h2>
 	    	<form action = "demo_form.asp">
 	  			Answer: <input type = "text" name="modelAnswer"><br>
-					<input type = "button" id="create" value="Submit" onclick="Javascript:game()">
+					<input type = "button" id="create-model" value="Submit" onclick="getModel()">
 				</form>
     	<h2>What is the finish?</h2>
 	    	<form action = "demo_form.asp">
 	  			Answer: <input type = "text" name="finishAnswer"><br>
-					<input type = "button" id="create" value="Submit" onclick="Javascript:game()">
+					<input type = "button" id="create-finish" value="Submit" onclick="getFinish()">
 				</form>
 
         <p></p>
@@ -58,10 +58,12 @@ function getManuf(){
 	var gotManuf = false; // true if correct manufacturer entered
 
 	do {
-		userManuf = getInput("What is the manufacturer's name?");
+		userManuf = document.getElementById('manufAnswer').value
 		userManuf = userManuf.toLowerCase();
+		alert(userManuf);
+		}
 
-		if (userManuf != goodManuf){
+		if (userManuf !== goodManuf){
 			showWrongAnswer(wrongMsg, manufHint);
 		}
 
@@ -81,7 +83,7 @@ function getModel(){
 	var gotModel = false; // true if correct model entered
 
 	do {
-			userModel = getInput("What is the razor's model name?");
+			document.getElementById('modelAnswer').value
 			userModel = userModel.toLowerCase();
 
 			if (userModel !== goodModel){
@@ -104,7 +106,7 @@ function getFinish(){
 	var gotFinish = false; // true if correct finish entered
 
 	do {
-				userFinish = getInput("What is the razor's finish?");
+				document.getElementById('finishAnswer').value
 				userFinish = userFinish.toLowerCase();
 
 				if (userFinish !== goodFinish){
@@ -118,9 +120,9 @@ function getFinish(){
 	while(gotFinish === false);
 } // getFinish
 
-		getManuf();
-		getModel();
-		getFinish();
+		//getManuf();
+		//getModel();
+		//getFinish();
 
 		alert("Congratulations, you got it.");
 
