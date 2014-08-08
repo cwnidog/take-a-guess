@@ -15,7 +15,7 @@
     	<h2>What is the manufacturers name?</h2>
 	    	<form id = manuf; action = "demo_form.asp">
 	  			Answer: <input type="text" name="manufAnswer"><br>
-					<input type = "button" id="create" value="Submit" onclick="Javascript:game()">
+					<input type = "button" id="create" value="Submit" onclick="JgetManuf()">
 				</form>
     	<h2>What is the model name?</h2>
 	    	<form action = "demo_form.asp">
@@ -58,11 +58,16 @@ function getManuf(){
 	var gotManuf = false; // true if correct manufacturer entered
 
 	do {
-		userManuf = getInput("What is the manufacturer's name?");
+		var manufNode = getElementById('manufAnswer');
+		userManuf = manufNode.firstChild.textContent;
+
+		alert("User entered " + userManuf);
+
 		userManuf = userManuf.toLowerCase();
 
 		if (userManuf != goodManuf){
 			showWrongAnswer(wrongMsg, manufHint);
+			userManuf;
 		}
 
 		else{
@@ -118,7 +123,7 @@ function getFinish(){
 	while(gotFinish === false);
 } // getFinish
 
-		getManuf();
+		//getManuf();
 		getModel();
 		getFinish();
 
