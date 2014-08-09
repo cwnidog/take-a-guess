@@ -2,32 +2,31 @@
 <html class="no-js"> <!--<![endif]-->
     <head>
         <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta http-equiv="X-UA-Compatible" content = "IE=edge">
         <title>Take A Guess</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name = "description" content = "">
+        <meta name = "viewport" content = "width=device-width, initial-scale=1">
       <h1>Take A Guess</h1>
     	<p>We're going to give you the opportunity to take a stab at guessing who made the best safety razor in the world!</p>
-
-    </head>
+		</head>
     <body>
 
     	<h2>What is the manufacturers name?</h2>
 	    	<form id = manuf; action = "demo_form.asp">
-	  			Answer: <input type="text" name="answer0"><br>
-					 <input type = "button" id="create-manuf" value="Submit" onclick="playGame(0)">
+	  			Answer: <input type = "text" id = "answer0"><br>
+					 <input type = "button" id = "create-manuf" value = "Submit" onclick= "playGame(0)">
 					 <p id = "go0" ></p>
 				</form>
     	<h2>What is the model name?</h2>
 	    	<form action = "demo_form.asp">
-	  			Answer: <input type = "text" name="answer1"><br>
-					<input type = "button" id="create-model" value="Submit" onclick="playGame(1)">
+	  			Answer: <input type = "text" id = "answer1" ><br>
+					<input type = "button" id = "create-model" value = "Submit" onclick = "playGame(1)">
 					<p id = "go1" ></p>
 				</form>
     	<h2>What is the finish?</h2>
 	    	<form action = "demo_form.asp">
-	  			Answer: <input type = "text" name="answer2"><br>
-					<input type = "button" id="create-finish" value="Submit" onclick="playGame(2)">
+	  			Answer: <input type = "text" id="answer2"><br>
+					<input type = "button" id = "create-finish" value = "Submit" onclick= "playGame(2)">
 					<p id = "go2" ></p>
 				</form>
     </body>
@@ -39,10 +38,8 @@
       var hint = [" Think moon occluding the sun.", " Another phrase for a crimson circle?", " What's on shiny bumpers?"];
       var guess = "";
 
-      guess = document.getElementsByName('answer' + i).value;
-
-      //guess = document.getElementsByTagName('answer' + i ).value;
-      //guess = guess.toLowerCase();
+      guess = document.getElementById('answer' + i).value;
+      guess = guess.toLowerCase();
 
       if (guess == answer[i]) {
           document.getElementById('go' + i).innerHTML = "Correct";
@@ -50,19 +47,5 @@
           document.getElementById('go' + i).innerHTML = hint[i];
       }
   }
-
-
-
-	// switch(i) {
-	// 		case 0:
-	// 			guess = document.getElementsByTagName('answer0').value;
-	// 			break;
-	// 			case 1:
-	// 			guess = document.getElementsByTagName('answer1').value;
-	// 			break;
-	// 			case 2:
-	// 			guess = document.getElementsByTagName('answer2').value;
-	// 			break;
-
 </script>
 
