@@ -14,116 +14,55 @@
 
     	<h2>What is the manufacturers name?</h2>
 	    	<form id = manuf; action = "demo_form.asp">
-	  			Answer: <input type="text" name="manufAnswer"><br>
-					 <input type = "button" id="create-manuf" value="Submit" onclick="getManuf()">
+	  			Answer: <input type="text" name="answer0"><br>
+					 <input type = "button" id="create-manuf" value="Submit" onclick="playGame(0)">
+					 <p id = "go0" ></p>
 				</form>
     	<h2>What is the model name?</h2>
 	    	<form action = "demo_form.asp">
-	  			Answer: <input type = "text" name="modelAnswer"><br>
-					<input type = "button" id="create-model" value="Submit" onclick="getModel()">
+	  			Answer: <input type = "text" name="answer1"><br>
+					<input type = "button" id="create-model" value="Submit" onclick="playGame(1)">
+					<p id = "go1" ></p>
 				</form>
     	<h2>What is the finish?</h2>
 	    	<form action = "demo_form.asp">
-	  			Answer: <input type = "text" name="finishAnswer"><br>
-					<input type = "button" id="create-finish" value="Submit" onclick="getFinish()">
+	  			Answer: <input type = "text" name="answer2"><br>
+					<input type = "button" id="create-finish" value="Submit" onclick="playGame(2)">
+					<p id = "go2" ></p>
 				</form>
-
-        <p></p>
-
-
     </body>
 </html>
 
 <script>
+  function playGame(i) {
+      var answer = ["eclipse", "red ring", "chrome"];
+      var hint = [" Think moon occluding the sun.", " Another phrase for a crimson circle?", " What's on shiny bumpers?"];
+      var guess = "";
 
-// Alert Message
-var wrongMsg = "You have guessed incorrectly, sorry.";
+      guess = document.getElementsByName('answer' + i).value;
 
-function getInput(promptString){
-	var inString = prompt(promptString);
-	return inString.toLowerCase();
-}
+      //guess = document.getElementsByTagName('answer' + i ).value;
+      //guess = guess.toLowerCase();
 
-// Let the user know if they guessed right or wrong.
-function showWrongAnswer(errorMsg, hint){
-	alert(errorMsg + hint);
-}
-
-// get the user's guess at manufacturer
-function getManuf(){
-
-	var goodManuf = "eclipse";
-	var manufHint = " Think moon occluding the sun.";
-	var userManuf = "";
-	var gotManuf = false; // true if correct manufacturer entered
-
-	do {
-		userManuf = document.getElementsByTagName('input').manufAnswer.value
-		userManuf = userManuf.toLowerCase();
+      if (guess == answer[i]) {
+          document.getElementById('go' + i).innerHTML = "Correct";
+      } else {
+          document.getElementById('go' + i).innerHTML = hint[i];
+      }
+  }
 
 
 
-		if (userManuf !== goodManuf){
-			showWrongAnswer(wrongMsg, manufHint);
-		}
-
-		else{
-			gotManuf = true;
-		}
-	} // do
-		while(gotManuf === false);
-} // getManuf
-
-// get the user's guess at razor model
-function getModel(){
-
-	var goodModel = "red ring";
-	var modelHint = " Another phrase for a crimson circle?";
-	var userModel = "";
-	var gotModel = false; // true if correct model entered
-
-	do {
-			userManuf = document.getElementsByTagName('input').modelAnswer.value
-			userModel = userModel.toLowerCase();
-
-			if (userModel !== goodModel){
-				showWrongAnswer(wrongMsg, modelHint);
-			}
-
-			else{
-				gotModel = true;
-			}
-		} // do
-	while(gotModel === false);
-} // getModel
-
-// get the user's guess at razor finish
-function getFinish(){
-
-	var goodFinish = "chrome";
-	var finishHint = " What's on shiny bumpers?";
-	var userFinish = "";
-	var gotFinish = false; // true if correct finish entered
-
-	do {
-				userManuf = document.getElementsByTagName('input').finishAnswer.value
-				userFinish = userFinish.toLowerCase();
-
-				if (userFinish !== goodFinish){
-					showWrongAnswer(wrongMsg, finishHint);
-				}
-
-				else{
-					gotFinish = true;
-				}
-	} // do
-	while(gotFinish === false);
-} // getFinish
-
-		//getManuf();
-		//getModel();
-		//getFinish();
-
-		alert("Congratulations, you got it.");
+	// switch(i) {
+	// 		case 0:
+	// 			guess = document.getElementsByTagName('answer0').value;
+	// 			break;
+	// 			case 1:
+	// 			guess = document.getElementsByTagName('answer1').value;
+	// 			break;
+	// 			case 2:
+	// 			guess = document.getElementsByTagName('answer2').value;
+	// 			break;
 
 </script>
+
