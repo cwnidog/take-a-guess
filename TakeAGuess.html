@@ -2,50 +2,64 @@
 <html class="no-js"> <!--<![endif]-->
     <head>
         <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content = "IE=edge">
         <title>Take A Guess</title>
         <meta name = "description" content = "">
         <meta name = "viewport" content = "width=device-width, initial-scale=1">
-      <h1>Take A Guess</h1>
-    	<p>We're going to give you the opportunity to take a stab at guessing who made the best safety razor in the world!</p>
-		</head>
+    </head>
     <body>
-
+      <h1 role = "heading">Take A Guess</h1>
+    	<p>We're going to give you the opportunity to take a stab at guessing who<br> made the best safety razor in the world! It's easy - just fill in the blanks
+      </p>
     	<h2>What is the manufacturers name?</h2>
 	    	<form id = manuf; action = "demo_form.asp">
-	  			Answer: <input type = "text" id = "answer0"><br>
-					 <input type = "button" id = "create-manuf" value = "Submit" onclick= "playGame(0)">
+	  			<label>Answer: <input type = "text" id = "answer0"></label><br>
+					 <input type = "button" id = "create-manuf" value = "Submit" onclick= "playGame(0)" role = "button">
 					 <p id = "go0" ></p>
 				</form>
-    	<h2>What is the model name?</h2>
+    	<h2 role = "heading">What is the model name?</h2>
 	    	<form action = "demo_form.asp">
-	  			Answer: <input type = "text" id = "answer1" ><br>
-					<input type = "button" id = "create-model" value = "Submit" onclick = "playGame(1)">
+	  			<label>Answer: <input type = "text" id = "answer1" ></label><br>
+					<input type = "button" id = "create-model" value = "Submit" onclick = "playGame(1)" role = "button">
 					<p id = "go1" ></p>
 				</form>
-    	<h2>What is the finish?</h2>
+    	<h2 role = "heading">What is the finish?</h2>
 	    	<form action = "demo_form.asp">
-	  			Answer: <input type = "text" id="answer2"><br>
-					<input type = "button" id = "create-finish" value = "Submit" onclick= "playGame(2)">
+	  			<label>Answer: <input type = "text" id="answer2"></label><br>
+					<input type = "button" id = "create-finish" value = "Submit" onclick= "playGame(2)" role = "button">
 					<p id = "go2" ></p>
 				</form>
+      <script type="text/javascript">
+
+      /*******************************************************************************
+      Function playGame() plays a guessing game where the user is asked to enter
+      information about a safety razor: who made it, what it was called, and what kind
+      of finish it has.
+
+      The user interface is provided by a web browser. When a commit button on the
+      browser screen is clicked, an integer, answerNum, is passed to the function indicating whichquestion is being answered. The function then reads the
+      appropriate text box toget the player's answer. If the answer is incorrect, a hint is displayed. If it is correct, the word "Correct" is displayed.
+      *******************************************************************************/
+
+        function playGame(answerNum) {
+            var answer = ["eclipse", "red ring", "chrome"]; // correct answers
+            var hint = [" Think moon occluding the sun.", " Another phrase for a crimson circle?", " What's on shiny bumpers?"]; // hints to use for incorrect guesses
+            var guess = ""; // player's guess
+
+            // use the answerNum to locate the correct text box for this answer and
+            // read the input text. Convert the text to all lower-case to give a
+            // consistent form for checking.
+            guess = document.getElementById('answer' + answerNum).value;
+            guess = guess.toLowerCase();
+
+            // Check the guess against the correct answer for the question. If matches,
+            // display "Correct", else - give a lttle help.
+            if (guess == answer[answerNum]) {
+                document.getElementById('go' + answerNum).innerHTML = "Correct";
+            } else {
+                document.getElementById('go' + answerNum).innerHTML = hint[answerNum];
+            }
+        } // function playGame()
+
+      </script>
     </body>
 </html>
-
-<script>
-  function playGame(i) {
-      var answer = ["eclipse", "red ring", "chrome"];
-      var hint = [" Think moon occluding the sun.", " Another phrase for a crimson circle?", " What's on shiny bumpers?"];
-      var guess = "";
-
-      guess = document.getElementById('answer' + i).value;
-      guess = guess.toLowerCase();
-
-      if (guess == answer[i]) {
-          document.getElementById('go' + i).innerHTML = "Correct";
-      } else {
-          document.getElementById('go' + i).innerHTML = hint[i];
-      }
-  }
-</script>
-
